@@ -1,0 +1,15 @@
+class Solution {
+    public boolean canConstruct(String r, String m) {
+        HashMap<Character,Integer> hm=new HashMap<>();
+        for(char ch:m.toCharArray()){
+            hm.put(ch,hm.getOrDefault(ch,0)+1);
+        }
+        for(char ch:r.toCharArray()){
+            if(!hm.containsKey(ch) || hm.get(ch)==0){
+                return false;
+            }
+            hm.put(ch,hm.get(ch)-1);
+        }
+        return true;
+    } 
+}
